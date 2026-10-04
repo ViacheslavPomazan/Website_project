@@ -1,0 +1,27 @@
+# created by virtualenv automatically
+# Віртуальне оточення
+.venv/
+venv/
+ENV/
+env/
+
+# Налаштування PyCharm (JetBrains)
+.idea/
+*.iml
+
+# Налаштування VS Code
+.vscode/
+
+# Кеш Python (тимчасові файли компіляції)
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Системні файли Windows
+Thumbs.db
+Desktop.ini
+
+# Тесовий
+test.py
+

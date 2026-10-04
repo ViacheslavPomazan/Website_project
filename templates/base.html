@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мій сайт{% endblock %}</title>
+    <link type="text/css" href="{{url_for('static', filename='css/style_base.css')}}" rel="stylesheet" />
+     <!-- ВІКОНЦЕ ДЛЯ ДОДАТКОВИХ СТИЛІВ СТОРІНОК -->
+    {% block styles %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <!-- Логотип компанії -->
+            <a href="/" class=logo>Верхній <span>Одяг</span></a>
+
+            <!-- Навігаційне меню -->
+            <nav>
+                {% block mainmenu %}
+                <ul class="nav-menu">
+                    {% for m in menu -%}
+                        <li><a href="{{m.url}}">{{m.name}}</a></li>
+                    {% endfor -%}
+                </ul>
+                {% endblock mainmenu %}
+            </nav>
+        </div>
+    </header>
+
+     <!-- ОЦЕ ВІКОНЦЕ ДЛЯ ІНШИХ СТОРІНОК -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Всі права захищені.</p>
+    </footer>
+
+</body>
+</html>

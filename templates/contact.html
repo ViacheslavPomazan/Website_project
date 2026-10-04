@@ -1,0 +1,46 @@
+ <!-- templates/contact.html -->
+{% extends 'base.html' %}
+
+{% block title %}Форма зворотного зв'язку{% endblock %}
+
+<!-- Заповнюємо віконце стилів для цієї сторінки -->
+{% block styles %}
+    <link type="text/css" href="{{ url_for('static', filename='css/style_contact.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- ДОБАВЛЯЕМ ЭТОТ КОНТЕЙНЕР -->
+<div class="container"> 
+    <div class="form-container">
+        <h2>Напишіть нам</h2>
+
+        {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+        {% endfor %}
+
+        <form action="/contact" method="POST">
+            <!-- Поле для введення імені -->
+            <div class="form-group">
+                <label for="username">Ім'я</label>
+                <input type="text" id="username" name="username" placeholder="Ваше ім'я" required>
+            </div>
+
+            <!-- Поле для введення Email -->
+            <div class="form-group">
+                <label for="email">Електронна пошта (Email)</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </div>
+
+            <!-- Поле для введення повідомлення -->
+            <div class="form-group">
+                <label for="message">Повідомлення</label>
+                <textarea id="message" name="message" placeholder="Введіть ваше повідомлення тут..." required></textarea>
+            </div>
+
+            <!-- Кнопка відправки -->
+            <button type="submit" class="submit-btn">Відправити</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

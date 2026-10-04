@@ -1,0 +1,149 @@
+
+   html, * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column; /* Змушує шапку, контент і футер вставати один під одним */
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    header {
+        background-color: #ffffff;
+        padding: 20px 0;
+        border-bottom: 1px solid #eaeaea;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        /* margin: 0 auto;  */
+    }
+
+    /* Flexbox-контейнер шапки: логотип та меню СТРОГО в один рядок */
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 24px; /* Зменшений відступ, щоб точно все поміщалося */
+        flex-wrap: nowrap; /* Жорстка заборона переносу на новий рядок */
+        width: 100%;
+    }
+
+    .logo {
+        margin-left: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /*text-align: center;*/
+        white-space: nowrap;        /* Запобігає переносу слів логотипа */
+        line-height: 1;
+        flex-shrink: 0;             /* Заборона стискання та переносу */
+    }
+
+    .logo span {
+        color: #c0392b;
+    }
+
+    /* Стилі для списку головного меню */
+     /* Навігація в один рядок правіше від логотипа */
+    nav {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        gap: 28px;
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    .nav-menu a {
+        text-decoration: none;
+        color: #4a4a4a;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase; /* Великі літери, як на скріншоті */
+        letter-spacing: 0.8px;
+        transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+            color: #c0392b; /* Зміна кольору при наведенні миші */
+    }
+
+
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        color: #ffffff;
+        padding: 140px 20px;
+        text-align: center;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .hero p {
+        font-size: 20px;
+        opacity: 0.9;
+        font-weight: 300;
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 18px;
+        }
+
+        .nav-menu {
+            gap: 16px;
+        }
+
+        .nav-menu a {
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        .hero {
+            padding: 80px 20px;
+        }
+    }
