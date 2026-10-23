@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Верхній одяг - Чоловічий та жіночий</title>
-    <link type="text/css" href="{{url_for('static', filename='css/style_base.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style_base.css')}}"  type="text/css" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon" />
 </head>
 <body>
 
@@ -33,6 +34,80 @@
             <p>Стильні пальто, куртки та тренчі для будь-якої погоди та сезону</p>
         </div>
     </section>
+    
+    <!-- <h1>Нові надходження</h1>
+    <h3>Зима 2026 - 2027:</h3>
+    <div class="images-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        
+        {% for product in products %}
+        <div class="product-card" style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; width: 320px;">
+            
+            Картинка робить запит за image_id
+            <img src="{{ url_for('get_image', image_id=product['image_id']) }}" alt="{{ product['name'] }}" width="300" style="display: block; margin-bottom: 10px;">
+            
+            Виведення атрибутів під картинкою
+            <h4 style="margin: 5px 0;">{{ product['name'] }}</h4>
+            <p style="margin: 5px 0; color: #555;">Модель: {{ product['model'] }}</p>
+            <p style="margin: 5px 0; color: #555;">Колір: {{ product['color'] }}</p>
+            <p style="margin: 5px 0; font-weight: bold; color: #e44d26;">Ціна: {{ product['price'] }} грн</p>
+            
+        </div>
+        {% endfor %}
+    
+    </div>  -->
+
+    <!-- ДОДАНО: Новий блок "Нові надходження" за макетом tentree.com -->
+    <section class="new-arrivals-section container">
+        
+        <!-- ДОДАНО: Верхній блок із об'єднаним заголовком, категоріями та стрілками навігації -->
+        <div class="new-arrivals-top">
+            <div class="new-arrivals-header-group">
+                <!-- ЗМІНЕНО: Заголовок і сезон об'єднано в один рядок -->
+                <h2 class="section-title">Нові надходження. Зима 2026 - 2027</h2>
+                
+                <!-- ДОДАНО: Підменю категорій (Жіночі - по дефолту) -->
+                <div class="category-tabs">
+                    <a href="#" class="tab-link active">Жіночі</a>
+                    <a href="#" class="tab-link">Чоловічі</a>
+                </div>
+            </div>
+
+            <!-- ДОДАНО: Круглі стрілки прокрутки як в tentree -->
+            <div class="scroll-arrows">
+                <button class="arrow-btn" onclick="scrollProducts(-1)" aria-label="Прокрутити ліворуч">&#10094;</button>
+                <button class="arrow-btn" onclick="scrollProducts(1)" aria-label="Прокрутити праворуч">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- ЗМІНЕНО: Стрічка карток продуктів (всі в один рядок без переносу, без inline-стилів) -->
+        <div class="products-slider" id="productsSlider">
+            {% for product in products %}
+            <div class="product-card">
+                <!-- Контейнер для зображення -->
+                <div class="product-image-wrapper">
+                    <img src="{{ url_for('get_image', image_id=product['image_id']) }}" alt="{{ product['name'] }}" class="product-image">
+                </div>
+                
+                <!-- Текстова інформація під зображенням -->
+                <div class="product-info">
+                    <h4 class="product-name">{{ product['name'] }}</h4>
+                    <p class="product-color">Колір: {{ product['color'] }}</p>
+                    <p class="product-price">Ціна: {{ product['price'] }} грн</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    <!-- ДОДАНО: Скрипт для роботи стрілок прокрутки slider -->
+    <script>
+        function scrollProducts(direction) {
+            const container = document.getElementById('productsSlider');
+            const scrollAmount = 300; // Відстань прокрутки в пікселях
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>

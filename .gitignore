@@ -3,7 +3,7 @@
 .venv/
 venv/
 ENV/
-env/
+.env
 
 # Налаштування PyCharm (JetBrains)
 .idea/
@@ -24,4 +24,3 @@ Desktop.ini
 
 # Тесовий
 test.py
-
